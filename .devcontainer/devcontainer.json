@@ -1,0 +1,43 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "ziglings",
+	"build": { "dockerfile": "devcontainer.dockerfile"  },
+	// I want my local project folder to be kept in synch while I make changes
+	// "workspaceMount": "source=${localWorkspaceFolder}",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/go:1": {}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+	
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+	
+	
+	"customizations": { // Configure tool-specific properties.
+		"vscode": {
+			"extensions": [ // An array of extensions that should be installed into the container.
+			// Generic use extensions(s)
+			"gruntfuggly.todo-tree",
+			"aaron-bond.better-comments",
+			"adam-bender.commit-message-editor",
+				"streetsidesoftware.code-spell-checker",
+				// Git & GitHub related extension(s)
+				"eamodio.gitlens",
+				"mhutchie.git-graph",
+				"github.vscode-github-actions",
+				// Markdown related extension(s)
+				"davidanson.vscode-markdownlint",
+				// Zig VS Code extension
+				"ziglang.vscode-zig"
+			]
+		}
+	}
+}
