@@ -128,8 +128,8 @@ pub fn main() void {
         // wanted for this Food.
         //
         // Please return this Food from the loop.
-        break;
-    };
+        break food;
+    } else menu[0];
     // ^ Oops! We forgot to return Mac & Cheese as the default
     // Food when the requested ingredients aren't found.
 
@@ -138,3 +138,31 @@ pub fn main() void {
 
 // Challenge: You can also do away with the 'found' variable in
 // the inner loop. See if you can figure out how to do that!
+//
+// ? Answer: just remove the if and `inline` the 'continue :food_loop' in the 'else' clause
+// ```zig
+// Look at each Food on the menu...
+// const meal = food_loop: for (menu) |food| {
+//
+//     // Now look at each required ingredient for the Food...
+//     for (food.requires, 0..) |required, required_ingredient| {
+//
+//         // This ingredient isn't required, so skip it.
+//         if (!required) continue;
+//
+//         // See if the customer wanted this ingredient.
+//         // (Remember that want_it will be the index number of
+//         // the ingredient based on its position in the
+//         // required ingredient list for each food.)
+//         for (wanted_ingredients) |want_it| {
+//             if (required_ingredient == want_it) break;
+//         } else continue :food_loop;
+//     }
+//
+//     // If we get this far, the required ingredients were all
+//     // wanted for this Food.
+//     //
+//     // Please return this Food from the loop.
+//     break food;
+// } else menu[0];
+// ```
