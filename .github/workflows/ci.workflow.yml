@@ -1,0 +1,22 @@
+name: Run full project test suite (CI)
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  run_go_test_suite:
+    name: "Run Ziglings test suite"
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout source code"
+      uses: actions/checkout@v4
+
+    - name: "Setup Zig environment"
+      uses: mlugg/setup-zig@v2
+      with:
+        version: 0.14.1
+
+    - name: "Run full 'zig test' suite"
+      run: zig build
